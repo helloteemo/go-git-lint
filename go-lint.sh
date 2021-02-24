@@ -61,6 +61,8 @@ createGitTemplates() {
     touch "$file"
   fi
   cat "$PWD/pre-commit.sh" >"$file"
+
+  chmod -R a+x "$HOME/.git-templates/hooks"
 }
 
 main() {
