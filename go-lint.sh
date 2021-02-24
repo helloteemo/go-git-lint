@@ -63,6 +63,8 @@ createGitTemplates() {
   cat "$PWD/pre-commit.sh" >"$file"
 
   chmod -R a+x "$HOME/.git-templates/hooks"
+
+  git config --global init.templatedir "${HOME}"/.git-templates
 }
 
 main() {
