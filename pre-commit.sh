@@ -38,6 +38,9 @@ check() {
       exit
     fi
   done
+  echo '行数检测和复杂度检测不是commit必须的，但是还是应该警惕这样的代码'
+  golangci-lint run --disable-all -E funlen
+  golangci-lint run --disable-all -E gocognit
 }
 
 yesOrNo() {
