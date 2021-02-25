@@ -4,8 +4,7 @@ true=1
 false=0
 
 checkGolangCILint() {
-  #    if ! [ -x "$(command -v golangci-lint)" ]; then
-  if [ -x "$(command -v golangci-lint)" ]; then
+  if ! [ -x "$(command -v golangci-lint)" ]; then
     echo 'Error: golangci-lint is not installed.'
     local flag="$false"
     read -r -p "是否需要安装golangci-lint (Y/N)" flag
