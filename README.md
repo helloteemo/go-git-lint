@@ -10,7 +10,14 @@
 git clone https://github.com/helloteemo/go-git-lint.git
 cd go-git-lint
 sh go-lint.sh
+source ~/.zshrc
 ```
+
+由于本人技术有限，加上个人环境不一致，使用自动化脚本可能安装不成功，接下来讲一下脚本安装的实现思路
+
+1. 安装 `golangci-lint`,可以Google一下安装程序，当然也可以直接运行`go-lint.sh`的第28行
+2. 配置`git hooks`,应该创建`~/.git-templates/hooks/pre-commit`文件，当然也可以在其它目录下
+3. 接下来配置`git`,`git config --global init.templatedir ~/.git-templates`，如果第二步在其它目录的话，那么就应该修改目录
 
 即可安装
 

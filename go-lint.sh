@@ -27,7 +27,7 @@ installGolangCILint() {
   fi
   curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b "${goPath}"/bin
   echo "export PATH=${goPath}/bin/:"'$PATH' >>"${HOME}"/.zshrc
-  source "${HOME}"/.zshrc
+  source "$HOME/.zshrc"
   echo "golangci-lint安装成功"
 }
 
@@ -69,6 +69,7 @@ createGitTemplates() {
 main() {
   # 判断是否安装golangci-lint,如果没有安装的话就直接安装
   checkGolangCILint
+  createGitTemplates
 }
 
 main
