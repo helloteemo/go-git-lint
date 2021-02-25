@@ -56,7 +56,37 @@ check() {
   golangci-lint run --disable-all -E gocognit
 }
 
+checkGitIgnore() {
+  if [ ! -f ".gitignore" ]; then
+    touch ".gitignore"
+  fi
+  for word in "*.exe" "*.exe~" "*.dll" "*.so" "*.dylib" "*.test" "*.out" ".idea" ".vscode"; do
+    grep "$word" .gitignore >/dev/null
+    if [[ "${?}" == 1 ]]; then
+      # 不包含word字符就要创建
+      echo "$word" >>.gitignore
+    fi
+  done
+  git add .gitignore
+}
+
+checkReadMe() {
+  if [ ! -f "README.md" ]; then
+    touch "README.md"
+    echo '**********************************************************************'
+    echo '                          请填写README.md文件                            '
+    echo '                   填写README.md文件是对代码最基本的尊重                    '
+    echo '**********************************************************************'
+    git add README.md
+    exit 1
+  fi
+}
+
 main() {
+  # 新增README文件检测
+  checkReadMe
+  # 新增.gitignore检测
+  checkGitIgnore
   checkGolangCILint
   goImports
   gofmt
@@ -66,7 +96,6 @@ main() {
   echo "         lint 检查完毕,允许commit"
   echo '====================================='
   echo ' '
-
 }
 
 main
