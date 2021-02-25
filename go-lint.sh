@@ -55,7 +55,7 @@ createGitTemplates() {
   if [ ! -d "$HOME/.git-templates/hooks/" ]; then
     mkdir "$HOME/.git-templates/hooks/"
   fi
-  locale file="$HOME/.git-templates/hooks/pre-commit"
+  file="$HOME/.git-templates/hooks/pre-commit"
   if [ ! -f "$file" ]; then
     touch "$file"
   fi
